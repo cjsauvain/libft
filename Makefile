@@ -6,7 +6,7 @@
 #    By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 15:21:43 by jsauvain          #+#    #+#              #
-#    Updated: 2022/04/12 15:37:21 by jsauvain         ###   ########.fr        #
+#    Updated: 2022/09/07 10:50:13 by jsauvain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ SRCS = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint
 BSRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-GCC = gcc
+CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror
 
 OBJS = ${SRCS:.c=.o}
 
@@ -43,7 +43,7 @@ clean:
 		${RM} ${OBJS} ${BONUS}
 
 .c.o:
-	${GCC} ${FLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 fclean: clean
 		${RM} $(NAME)

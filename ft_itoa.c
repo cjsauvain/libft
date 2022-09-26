@@ -6,13 +6,13 @@
 /*   By: jsauvain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:21:41 by jsauvain          #+#    #+#             */
-/*   Updated: 2022/04/12 15:39:41 by jsauvain         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:04:06 by jsauvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	char	*ft_malloc(int n)
+char	*ft_malloc(int n)
 {
 	char	*src;
 	int		i;
@@ -32,7 +32,7 @@ static	char	*ft_malloc(int n)
 	return (src);
 }
 
-static char	*ft_reverse(char *src)
+char	*ft_reverse(char *src)
 {
 	int		i;
 	int		j;
@@ -52,29 +52,6 @@ static char	*ft_reverse(char *src)
 	return (src);
 }
 
-static char	*n_value(int n, char *src)
-{
-	if (n == -2147483648)
-	{
-		src[0] = '-';
-		src[1] = '2';
-		src[2] = '1';
-		src[3] = '4';
-		src[4] = '7';
-		src[5] = '4';
-		src[6] = '8';
-		src[7] = '3';
-		src[8] = '6';
-		src[9] = '4';
-		src[10] = '8';
-		src[11] = '\0';
-		return (src);
-	}
-	src[0] = '0';
-	src [1] = '\0';
-	return (src);
-}
-
 char	*ft_itoa(int n)
 {
 	char	*src;
@@ -84,11 +61,13 @@ char	*ft_itoa(int n)
 	i = 0;
 	n_copy = n;
 	src = ft_malloc(n);
-	if (n == 0 || n == -2147483648)
-		return (n_value(n, src));
-	else if (src == NULL)
+	if (src == NULL)
 		return (src);
-	else if (n < 0)
+	else if (n == 0)
+		return ("0");
+	else if (n == -2147483648)
+		return ("-2147483648");
+	if (n < 0)
 		n = -n;
 	while (n > 0)
 	{

@@ -4,7 +4,8 @@
 
 ## 📌 Objectif
 
-> Recréer une sélection de fonctions utiles de la libc ainsi que quelques fonctions utilitaires supplémentaires. Cette bibliothèque sert de base à de nombreux projets suivants à 42.
+> Recréer une sélection de fonctions utiles de la libc ainsi que quelques fonctions utilitaires supplémentaires.  
+> Cette bibliothèque sert de base à de nombreux projets suivants à 42.
 
 ## ✅ Prérequis
 

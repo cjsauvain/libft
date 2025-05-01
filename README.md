@@ -15,7 +15,7 @@
 
 ```bash
 make
-gcc <source files> -L. -lft
+gcc <source files> -L/path/to/lib -lft
 ```
 ## 📁 Structure des fichiers
 

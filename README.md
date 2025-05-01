@@ -14,7 +14,8 @@
 ## 🚀 Compilation
 
 ```bash
-make
+make [bonus]
+
 gcc <source files> -L/path/to/lib -lft
 ```
 

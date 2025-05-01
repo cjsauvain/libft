@@ -11,7 +11,7 @@
 
 - Un compilateur C
 
-## 🧪 Compilation
+## 🚀 Compilation
 
 ```bash
 make

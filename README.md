@@ -11,7 +11,7 @@
 
 - gcc
 
-## 🚀 Compilation
+## 📦 Compilation
 
 ```bash
 make [bonus]

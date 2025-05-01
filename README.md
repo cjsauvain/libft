@@ -21,10 +21,3 @@ gcc <source files> -L/path/to/lib -lft
 ## 🧠 Concepts abordés
 
 - Création d'une librairie statique
-
-## 📁 Structure des fichiers
-
-- `libft.h` : Fichier d'en-tête principal
-- `*.c` : Implémentations des fonctions
-- `Makefile` : Automatisation de la compilation
-- `libft.a` : Librairie statique générée

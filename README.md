@@ -9,7 +9,7 @@
 
 ## ✅ Prérequis
 
-- Un compilateur C
+- gcc
 
 ## 🚀 Compilation
 

@@ -1,7 +1,6 @@
 # ft_libft
 
 > Premier projet de l'école.  
-> Projet de création d'une bibliothèque standard en C, réalisé dans le cadre du cursus de l'école 42.
 
 ## 📌 Objectif
 
@@ -17,6 +16,11 @@
 make
 gcc <source files> -L/path/to/lib -lft
 ```
+
+## 🧠 Concepts abordés
+
+- Création d'une librairie statique
+
 ## 📁 Structure des fichiers
 
 - `libft.h` : Fichier d'en-tête principal

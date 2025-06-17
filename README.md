@@ -9,14 +9,14 @@
 
 ## ✅ Prérequis
 
-- gcc
+- clang
 
 ## 📦 Compilation
 
 ```bash
-make [bonus]
+make
 
-gcc <source files> -L/path/to/lib -lft
+gcc/clang <source files> -L/path/to/lib -lft
 ```
 
 ## 🧠 Concepts abordés

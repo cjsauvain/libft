@@ -64,21 +64,38 @@ OBJS = $(subst $(SRCS_DIR)/,,$(SRCS:%.c=$(OBJS_DIR)/%.o))
 #    Compilation	#
 #####################
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra --std=c23
 INCLUDE = -I $(INC_DIR)
 AR = ar rcs
+
+ifeq ($(DEV), 1)
+CFLAGS += -g3
+USE_WARNINGS := 1
+EXTRA_DEPS += compile_commands.json
+endif
+
+ifneq ($(USE_WARNINGS), 1)
+CFLAGS += -Werror
+endif
+
+ifeq ($(SILENT), 1)
+CC=@clang
+endif
 
 #####################
 #       Rules       #
 #####################
-all: $(NAME)
+all: $(EXTRA_DEPS) $(NAME)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADER)
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS)
 		$(AR) $(NAME) $(OBJS)
+
+compile_commands.json: clean
+		@bear -- make --no-print-directory SILENT=1 USE_WARNINGS=1 $(NAME) -j$(shell nproc)	
 
 clean:
 		rm -rf $(OBJS_DIR)

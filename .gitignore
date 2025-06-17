@@ -1,0 +1,4 @@
+libft.a
+obj/
+.cache/
+compile_commands.json

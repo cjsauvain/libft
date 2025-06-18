@@ -34,7 +34,7 @@ SRCS_STRING =	ft_strlcpy.c ft_strlcat.c ft_strlen.c \
 				ft_strnstr.c ft_atoi.c ft_strdup.c \
 			  	ft_substr.c ft_strjoin.c ft_strtrim.c \
 			  	ft_strmapi.c ft_striteri.c ft_itoa.c \
-			  	ft_split.c
+			  	ft_split.c ft_strlen_double.c
 
 SRCS_MEMORY =	ft_bzero.c ft_memcpy.c ft_memmove.c \
 			  	ft_memset.c ft_memchr.c ft_memcmp.c \
@@ -47,11 +47,14 @@ SRCS_LST =		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 				ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 				ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
+SRCS_PARSING =	ft_getopt.c
+
 SRCS =	$(addprefix $(SRCS_DIR)/char/, $(SRCS_CHAR))		\
 		$(addprefix $(SRCS_DIR)/string/, $(SRCS_STRING))	\
 		$(addprefix $(SRCS_DIR)/memory/, $(SRCS_MEMORY))	\
 		$(addprefix $(SRCS_DIR)/io/, $(SRCS_IO))			\
-		$(addprefix $(SRCS_DIR)/lst/, $(SRCS_LST))		\
+		$(addprefix $(SRCS_DIR)/lst/, $(SRCS_LST))			\
+		$(addprefix $(SRCS_DIR)/parsing/, $(SRCS_PARSING))	\
 
 HEADER = $(INC_DIR)/libft.h
 
@@ -64,7 +67,7 @@ OBJS = $(subst $(SRCS_DIR)/,,$(SRCS:%.c=$(OBJS_DIR)/%.o))
 #    Compilation	#
 #####################
 CC = clang
-CFLAGS = -Wall -Wextra --std=c23
+CFLAGS = -Wall -Wextra -Werror --std=c23
 INCLUDE = -I $(INC_DIR)
 AR = ar rcs
 
@@ -72,10 +75,6 @@ ifeq ($(DEV), 1)
 CFLAGS += -g3
 USE_WARNINGS := 1
 EXTRA_DEPS += compile_commands.json
-endif
-
-ifneq ($(USE_WARNINGS), 1)
-CFLAGS += -Werror
 endif
 
 ifeq ($(SILENT), 1)
@@ -91,7 +90,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADER)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 		$(AR) $(NAME) $(OBJS)
 
 compile_commands.json: clean
